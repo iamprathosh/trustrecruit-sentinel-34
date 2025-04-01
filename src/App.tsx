@@ -12,6 +12,8 @@ import Register from "./pages/Register";
 import JobListing from "./pages/JobListing";
 import PostJob from "./pages/PostJob";
 import Dashboard from "./pages/Dashboard";
+import About from "./pages/About";
+import VerifyIdentity from "./pages/VerifyIdentity";
 import NotFound from "./pages/NotFound";
 
 // Create a new QueryClient instance outside the component
@@ -32,6 +34,8 @@ const App = () => (
               <Route path="/jobs" element={<JobListing />} />
               <Route path="/post-job" element={<PostJob />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/verify-identity" element={<VerifyIdentity />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
