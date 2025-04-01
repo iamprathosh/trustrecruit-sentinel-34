@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { ShieldCheck, Search, UserCheck, AlertTriangle } from "lucide-react";
+import { ShieldCheck, Search, UserCheck, AlertTriangle, BadgeIndianRupee } from "lucide-react";
 import Navbar from '@/components/layout/Navbar';
 
 const Index = () => {
@@ -13,28 +13,28 @@ const Index = () => {
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="py-12 md:py-24 lg:py-32 bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-background">
+        <section className="py-12 md:py-24 lg:py-32 bg-gradient-to-b from-orange-50 to-white dark:from-gray-900 dark:to-background">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
               <div className="space-y-4">
-                <div className="inline-block rounded-lg bg-blue-100 px-3 py-1 text-sm dark:bg-blue-800/30">
-                  Protecting job seekers from fraud
+                <div className="inline-block rounded-lg bg-orange-100 px-3 py-1 text-sm dark:bg-orange-800/30">
+                  सुरक्षित नौकरी तलाश (Secure Job Search)
                 </div>
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                  Trustworthy Recruitment with AI-Powered Protection
+                  AI-Powered Protection for Indian Job Seekers
                 </h1>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  TrustRecruit uses advanced DeBERTa algorithms to detect fraudulent job listings and protect job seekers. Browse verified opportunities with confidence.
+                  TrustRecruit uses advanced DeBERTa algorithms to detect fraudulent job listings and protect Indian job seekers from scams. Browse verified opportunities with confidence.
                 </p>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Link to="/jobs">
-                    <Button className="inline-flex h-10 px-4 py-2">
+                    <Button className="inline-flex h-10 px-4 py-2 bg-blue-600 hover:bg-blue-700">
                       <Search className="mr-2 h-5 w-5" />
                       Browse Jobs
                     </Button>
                   </Link>
                   <Link to="/register">
-                    <Button variant="outline" className="inline-flex h-10 px-4 py-2">
+                    <Button variant="outline" className="inline-flex h-10 px-4 py-2 border-blue-600 text-blue-600 hover:bg-blue-50">
                       Create an Account
                     </Button>
                   </Link>
@@ -42,14 +42,14 @@ const Index = () => {
               </div>
               <div className="mx-auto lg:order-last flex items-center justify-center">
                 <div className="relative">
-                  <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-primary to-indigo-500 opacity-75 blur-xl"></div>
+                  <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-orange-500 to-blue-500 opacity-75 blur-xl"></div>
                   <div className="relative bg-background p-6 rounded-xl shadow-xl">
                     <div className="w-full max-w-md mx-auto space-y-4">
                       <div className="flex items-center p-3 bg-green-50 rounded-md dark:bg-green-900/20">
                         <ShieldCheck className="h-6 w-6 text-green-600 dark:text-green-400 mr-2" />
                         <div>
                           <h3 className="font-medium">Verified Job Posting</h3>
-                          <p className="text-sm text-muted-foreground">Senior Developer at TechCorp</p>
+                          <p className="text-sm text-muted-foreground">Senior Developer at TCS, Bengaluru</p>
                         </div>
                         <Badge className="trust-badge trust-badge-high ml-auto">95% Trust</Badge>
                       </div>
@@ -57,7 +57,7 @@ const Index = () => {
                         <AlertTriangle className="h-6 w-6 text-amber-600 dark:text-amber-400 mr-2" />
                         <div>
                           <h3 className="font-medium">Suspicious Listing</h3>
-                          <p className="text-sm text-muted-foreground">Quick Cash Opportunity</p>
+                          <p className="text-sm text-muted-foreground">Quick Money Work From Home</p>
                         </div>
                         <Badge className="trust-badge trust-badge-medium ml-auto">65% Trust</Badge>
                       </div>
@@ -65,7 +65,7 @@ const Index = () => {
                         <AlertTriangle className="h-6 w-6 text-red-600 dark:text-red-400 mr-2" />
                         <div>
                           <h3 className="font-medium">Blocked Fraudulent Job</h3>
-                          <p className="text-sm text-muted-foreground">Make $10K/week from home!</p>
+                          <p className="text-sm text-muted-foreground">₹50,000/day from home!</p>
                         </div>
                         <Badge className="trust-badge trust-badge-low ml-auto">15% Trust</Badge>
                       </div>
@@ -82,38 +82,38 @@ const Index = () => {
           <div className="container px-4 md:px-6">
             <div className="text-center space-y-4 mb-12">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                How TrustRecruit Protects You
+                How TrustRecruit Protects Indian Job Seekers
               </h2>
               <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Our platform uses cutting-edge technology to ensure a safe and reliable job search experience.
+                Our platform uses cutting-edge technology to ensure a safe and reliable job search experience across India.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="flex flex-col items-center text-center space-y-4">
-                <div className="p-4 bg-blue-100 rounded-full dark:bg-blue-900/20">
-                  <ShieldCheck className="h-10 w-10 text-primary" />
+                <div className="p-4 bg-orange-100 rounded-full dark:bg-orange-900/20">
+                  <ShieldCheck className="h-10 w-10 text-blue-600" />
                 </div>
                 <h3 className="text-xl font-bold">AI Fraud Detection</h3>
                 <p className="text-muted-foreground">
-                  Our DeBERTa algorithm analyzes job postings to detect scams and protect users from fraudulent listings.
+                  Our DeBERTa algorithm analyzes job postings to detect scams and protect users from fraudulent listings common in India.
                 </p>
               </div>
               <div className="flex flex-col items-center text-center space-y-4">
-                <div className="p-4 bg-blue-100 rounded-full dark:bg-blue-900/20">
-                  <UserCheck className="h-10 w-10 text-primary" />
+                <div className="p-4 bg-orange-100 rounded-full dark:bg-orange-900/20">
+                  <UserCheck className="h-10 w-10 text-blue-600" />
                 </div>
-                <h3 className="text-xl font-bold">ID Verification</h3>
+                <h3 className="text-xl font-bold">Aadhaar Verification</h3>
                 <p className="text-muted-foreground">
-                  Government-issued ID verification ensures all users on our platform are genuine and trustworthy.
+                  Optional Aadhaar-based verification ensures all users on our platform are genuine and trustworthy Indian citizens.
                 </p>
               </div>
               <div className="flex flex-col items-center text-center space-y-4">
-                <div className="p-4 bg-blue-100 rounded-full dark:bg-blue-900/20">
-                  <AlertTriangle className="h-10 w-10 text-primary" />
+                <div className="p-4 bg-orange-100 rounded-full dark:bg-orange-900/20">
+                  <BadgeIndianRupee className="h-10 w-10 text-blue-600" />
                 </div>
-                <h3 className="text-xl font-bold">Community Reporting</h3>
+                <h3 className="text-xl font-bold">Salary Transparency</h3>
                 <p className="text-muted-foreground">
-                  Our users help keep the platform safe by reporting suspicious listings, with admin review of all reports.
+                  We flag suspicious salary claims and ensure realistic pay ranges for each role and location in India.
                 </p>
               </div>
             </div>
@@ -121,25 +121,25 @@ const Index = () => {
         </section>
         
         {/* CTA Section */}
-        <section className="py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground">
+        <section className="py-12 md:py-24 lg:py-32 bg-blue-600 text-white">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                  Ready to Find a Trustworthy Job?
+                  Ready to Find a Trusted Job in India?
                 </h2>
                 <p className="mx-auto max-w-[700px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Join TrustRecruit today and access verified job opportunities from trusted employers.
+                  Join TrustRecruit today and access verified job opportunities from trusted employers across India.
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
                 <Link to="/register">
-                  <Button className="inline-flex h-10 px-6 py-3 bg-background text-primary">
+                  <Button className="inline-flex h-10 px-6 py-3 bg-white text-blue-600 hover:bg-gray-100">
                     Get Started
                   </Button>
                 </Link>
                 <Link to="/about">
-                  <Button variant="outline" className="inline-flex h-10 px-6 py-3 border-primary-foreground bg-transparent">
+                  <Button variant="outline" className="inline-flex h-10 px-6 py-3 border-white bg-transparent hover:bg-blue-700">
                     Learn More
                   </Button>
                 </Link>
@@ -153,11 +153,11 @@ const Index = () => {
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center gap-4 md:gap-6">
             <div className="flex items-center gap-2">
-              <ShieldCheck className="h-6 w-6 text-primary" />
-              <span className="font-bold">TrustRecruit</span>
+              <ShieldCheck className="h-6 w-6 text-blue-600" />
+              <span className="font-bold">TrustRecruit India</span>
             </div>
             <p className="text-center text-sm text-muted-foreground">
-              © {new Date().getFullYear()} TrustRecruit. All rights reserved.
+              © {new Date().getFullYear()} TrustRecruit India. All rights reserved.
             </p>
           </div>
         </div>

@@ -5,15 +5,31 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { getJobs, Job } from "@/services/jobService";
-import { Search, Filter } from "lucide-react";
+import { Search, Filter, MapPin } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import { toast } from "sonner";
+
+// Define Indian locations for filtering
+const indianLocations = [
+  "All Locations",
+  "Delhi NCR",
+  "Mumbai",
+  "Bengaluru",
+  "Hyderabad",
+  "Chennai",
+  "Kolkata",
+  "Pune",
+  "Ahmedabad",
+  "Jaipur",
+  "Chandigarh"
+];
 
 const JobListing: React.FC = () => {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [filteredJobs, setFilteredJobs] = useState<Job[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [trustFilter, setTrustFilter] = useState("all");
+  const [locationFilter, setLocationFilter] = useState("All Locations");
   const [sortBy, setSortBy] = useState("newest");
   const [isLoading, setIsLoading] = useState(true);
   
@@ -62,6 +78,13 @@ const JobListing: React.FC = () => {
       }
     }
     
+    // Location filter (India-specific)
+    if (locationFilter !== "All Locations") {
+      result = result.filter(job => 
+        job.location.toLowerCase().includes(locationFilter.toLowerCase())
+      );
+    }
+    
     // Sorting
     if (sortBy === "newest") {
       result.sort((a, b) => new Date(b.postedDate).getTime() - new Date(a.postedDate).getTime());
@@ -74,7 +97,7 @@ const JobListing: React.FC = () => {
     }
     
     setFilteredJobs(result);
-  }, [jobs, searchTerm, trustFilter, sortBy]);
+  }, [jobs, searchTerm, trustFilter, locationFilter, sortBy]);
   
   const handleJobUpdate = (updatedJob: Job) => {
     setJobs(prevJobs => prevJobs.map(job => job.id === updatedJob.id ? updatedJob : job));
@@ -85,16 +108,16 @@ const JobListing: React.FC = () => {
       <Navbar />
       
       <main className="flex-1 container py-8 px-4 md:px-6">
-        <h1 className="text-3xl font-bold mb-6">Find Trusted Job Opportunities</h1>
+        <h1 className="text-3xl font-bold mb-6">Find Trusted Job Opportunities in India</h1>
         
         <div className="mb-6">
-          <div className="grid gap-4 md:grid-cols-4">
-            <div className="md:col-span-2">
+          <div className="grid gap-4 md:grid-cols-12">
+            <div className="md:col-span-4">
               <div className="relative">
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                 <Input
                   type="search"
-                  placeholder="Search jobs by title, company, or location..."
+                  placeholder="Search jobs, companies, or skills..."
                   className="pl-8"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
@@ -102,12 +125,31 @@ const JobListing: React.FC = () => {
               </div>
             </div>
             
-            <div>
+            <div className="md:col-span-3">
+              <Select
+                value={locationFilter}
+                onValueChange={setLocationFilter}
+              >
+                <SelectTrigger className="w-full">
+                  <MapPin className="h-4 w-4 mr-2" />
+                  <SelectValue placeholder="Location" />
+                </SelectTrigger>
+                <SelectContent>
+                  {indianLocations.map(location => (
+                    <SelectItem key={location} value={location}>
+                      {location}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            
+            <div className="md:col-span-3">
               <Select
                 value={trustFilter}
                 onValueChange={setTrustFilter}
               >
-                <SelectTrigger>
+                <SelectTrigger className="w-full">
                   <SelectValue placeholder="Trust Score" />
                 </SelectTrigger>
                 <SelectContent>
@@ -119,12 +161,12 @@ const JobListing: React.FC = () => {
               </Select>
             </div>
             
-            <div>
+            <div className="md:col-span-2">
               <Select
                 value={sortBy}
                 onValueChange={setSortBy}
               >
-                <SelectTrigger>
+                <SelectTrigger className="w-full">
                   <SelectValue placeholder="Sort By" />
                 </SelectTrigger>
                 <SelectContent>
@@ -149,6 +191,7 @@ const JobListing: React.FC = () => {
               onClick={() => {
                 setSearchTerm("");
                 setTrustFilter("all");
+                setLocationFilter("All Locations");
                 setSortBy("newest");
               }}
             >
@@ -166,7 +209,7 @@ const JobListing: React.FC = () => {
           <div className="py-20 text-center">
             <h2 className="text-xl font-semibold mb-2">No jobs found</h2>
             <p className="text-muted-foreground">
-              Try adjusting your search criteria or check back later for new listings.
+              Try adjusting your search criteria or check back later for new job opportunities.
             </p>
           </div>
         ) : (

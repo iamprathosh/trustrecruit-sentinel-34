@@ -7,20 +7,25 @@ import { Job } from "./jobService";
 const fraudKeywords = [
   "urgent", "make money", "get rich", "quick cash", "easy money", "work from home",
   "no experience", "immediate start", "credit card", "registration fee", "payment required",
-  "secret", "system", "guaranteed", "unlimited", "$$$", "cash", "money", "get paid today",
-  "immediate payment", "pyramid", "investment opportunity", "multi-level", "mlm"
+  "secret", "system", "guaranteed", "unlimited", "$$$", "₹₹₹", "cash", "money", "get paid today",
+  "immediate payment", "pyramid", "investment opportunity", "multi-level", "mlm",
+  "lakhs per month", "crores", "earn in dollars", "foreign clients", "paisa", "instant money"
 ];
 
 const fraudPatterns = [
-  /\$\d+[k]?\/(?:day|week|hour)/i, // Unrealistic salary
-  /\$\d{4,}\/(?:day|week)/i,       // High pay for short period
+  /₹\d+[k]?\/(?:day|week|hour)/i,  // Unrealistic salary
+  /₹\d{4,}\/(?:day|week)/i,        // High pay for short period
   /pay.*(?:upfront|advance)/i,     // Payment upfront
   /register.*fee/i,                // Registration fee
   /\b(?:urgent|immediate)\b/i,     // Urgency without reason
   /no experience needed/i,         // No experience but high salary
   /(?:credit card|payment).*required/i, // Payment required
   /(?:training|starter) (?:kit|package|fee)/i, // Training fees
-  /work.*from.*home/i             // Work from home (when combined with other patterns)
+  /work.*from.*home/i,            // Work from home (when combined with other patterns)
+  /\d+ lakhs?/i,                  // Unrealistic salary in lakhs
+  /\d+ crores?/i,                 // Unrealistic salary in crores
+  /aadhar.*required/i,            // Suspicious Aadhaar card requirement
+  /pan.*card.*upload/i            // Suspicious PAN card requirement
 ];
 
 export interface FraudAnalysisResult {
@@ -60,8 +65,10 @@ export const analyzeJobPosting = async (job: Partial<Job>): Promise<FraudAnalysi
         flaggedContent.push(`Suspicious patterns detected in job description`);
       }
       
-      // Check for salary red flags
-      if (job.salary && /\$\d{3,}k?\+?\s*\/\s*(day|week)/i.test(job.salary)) {
+      // Check for salary red flags (using Indian currency format)
+      if (job.salary && (/₹\d{3,}k?\+?\s*\/\s*(day|week)/i.test(job.salary) || 
+                         /\d{2,}\s*lakhs?/i.test(job.salary) ||
+                         /\d+\s*crores?/i.test(job.salary))) {
         flaggedContent.push(`Unusually high salary: ${job.salary}`);
       }
       
@@ -101,9 +108,9 @@ export const analyzeJobPosting = async (job: Partial<Job>): Promise<FraudAnalysi
       } else if (trustScore >= 50) {
         recommendation = "This job posting has some suspicious elements but may be legitimate. Proceed with caution.";
       } else if (trustScore >= 30) {
-        recommendation = "This job posting has multiple fraud indicators. We recommend rejecting it.";
+        recommendation = "This job posting has multiple fraud indicators common in Indian job scams. We recommend rejecting it.";
       } else {
-        recommendation = "This job posting is highly likely to be fraudulent. It should be rejected.";
+        recommendation = "This job posting is highly likely to be fraudulent. It should be rejected to protect Indian job seekers.";
       }
       
       resolve({

@@ -7,8 +7,14 @@ const Login: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="flex-1 flex items-center justify-center py-12 px-4">
-        <LoginForm />
+      <main className="flex-1 flex items-center justify-center py-12 px-4 bg-gradient-to-b from-orange-50 to-white dark:from-gray-900 dark:to-background">
+        <div className="w-full max-w-md">
+          <div className="text-center mb-8">
+            <h1 className="text-2xl font-bold mb-2">Welcome Back to TrustRecruit India</h1>
+            <p className="text-muted-foreground">Log in to access trusted job opportunities</p>
+          </div>
+          <LoginForm />
+        </div>
       </main>
     </div>
   );
