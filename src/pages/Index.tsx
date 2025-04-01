@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import { ShieldCheck, Search, UserCheck, AlertTriangle } from "lucide-react";
 import Navbar from '@/components/layout/Navbar';
