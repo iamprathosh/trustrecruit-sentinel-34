@@ -26,11 +26,11 @@ const VerifyIdentity: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="flex-1 flex items-center justify-center py-12 px-4 bg-gradient-to-b from-orange-50 to-white dark:from-gray-900 dark:to-background">
+      <main className="flex-1 flex items-center justify-center py-12 px-4 bg-gradient-to-b from-aliceblue to-seasalt dark:from-ruddyblue2/30 dark:to-background">
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
             <div className="flex items-center justify-center mb-4">
-              <ShieldCheck className="h-12 w-12 text-primary" />
+              <ShieldCheck className="h-12 w-12 text-ruddyblue2" />
             </div>
             <h1 className="text-2xl font-bold mb-2">Verify Your Identity</h1>
             <p className="text-muted-foreground">
@@ -38,7 +38,7 @@ const VerifyIdentity: React.FC = () => {
             </p>
           </div>
           
-          <Card>
+          <Card className="border-powderblue dark:border-ruddyblue/40">
             <CardHeader>
               <CardTitle>Identity Verification</CardTitle>
               <CardDescription>
@@ -84,7 +84,7 @@ const VerifyIdentity: React.FC = () => {
                 
                 <div className="space-y-2">
                   <Label htmlFor="id-upload">Upload ID (Front & Back)</Label>
-                  <div className="border border-dashed border-input rounded-md p-6 flex flex-col items-center justify-center gap-2">
+                  <div className="border border-dashed border-powderblue dark:border-ruddyblue/40 rounded-md p-6 flex flex-col items-center justify-center gap-2">
                     <Upload className="h-8 w-8 text-muted-foreground" />
                     <p className="text-sm text-muted-foreground text-center">
                       Drag & drop your files here or click to browse
@@ -95,6 +95,7 @@ const VerifyIdentity: React.FC = () => {
                       variant="outline"
                       size="sm"
                       onClick={() => document.getElementById('id-upload')?.click()}
+                      className="border-ruddyblue2 text-ruddyblue2 hover:bg-aliceblue/50"
                     >
                       Select Files
                     </Button>
@@ -104,7 +105,7 @@ const VerifyIdentity: React.FC = () => {
                 {user?.role === "recruiter" && (
                   <div className="space-y-2">
                     <Label htmlFor="company-proof">Company Registration Proof</Label>
-                    <div className="border border-dashed border-input rounded-md p-6 flex flex-col items-center justify-center gap-2">
+                    <div className="border border-dashed border-powderblue dark:border-ruddyblue/40 rounded-md p-6 flex flex-col items-center justify-center gap-2">
                       <Upload className="h-8 w-8 text-muted-foreground" />
                       <p className="text-sm text-muted-foreground text-center">
                         Drag & drop your files here or click to browse
@@ -115,6 +116,7 @@ const VerifyIdentity: React.FC = () => {
                         variant="outline"
                         size="sm"
                         onClick={() => document.getElementById('company-proof')?.click()}
+                        className="border-ruddyblue2 text-ruddyblue2 hover:bg-aliceblue/50"
                       >
                         Select File
                       </Button>
@@ -128,7 +130,7 @@ const VerifyIdentity: React.FC = () => {
               </form>
             </CardContent>
             <CardFooter>
-              <Button onClick={handleSubmit} className="w-full">Submit for Verification</Button>
+              <Button onClick={handleSubmit} className="w-full bg-ruddyblue2 hover:bg-ruddyblue">Submit for Verification</Button>
             </CardFooter>
           </Card>
         </div>

@@ -68,7 +68,13 @@ export default {
 					medium: '#ffad33',
 					high: '#00cc66',
 					verified: '#1e88e5'
-				}
+				},
+				// New color palette
+				seasalt: '#f8f9fb',
+				aliceblue: '#e1ecf7',
+				powderblue: '#aecbeb',
+				ruddyblue: '#83b0e1',
+				ruddyblue2: '#71a5de',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
